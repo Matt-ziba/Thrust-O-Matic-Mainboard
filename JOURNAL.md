@@ -24,3 +24,15 @@ After a couple hours of research i’ve created a block diagram of the electroni
 
 #### Block diagram:
 ![Block Diagram](https://hc-cdn.hel1.your-objectstorage.com/s/v3/ad1050f0f4cdaa7833b0d3583ed547c1f04eebf5_image.png)
+
+## 8.7.2025- Update, finished BMU circuit
+It’s been a while since the last update. I have been busy with end of the school year responsibilities and vacation. I’m currently in Poland, but I finally found some time to continue work on the project. Today, I focused on researching and drafting the schematic for the BMU.
+
+The device is designed to charge its onboard battery when connected to USB, but only if the USB source is capable of delivering at least 3A. This functionality hasn’t been fully implemented yet. Initially, I considered using a USB-C PD controller IC to detect whether the connected USB port can supply enough current. However, I eventually decided that a simple switch would be a more simple solution. This way, the device will start to charge only when the charging is manually enabled.
+
+The battery is necessary because the device is intended to operate outdoors where there is no access to mains power. At first, I considered using a power bank, but I eventually went for a dedicated battery instead. It also gives me a chance to better understand battery charging logic and power management.
+
+There is not much else to say, hopefully tomorrow I will have some more time to work on the project.
+
+#### BMU schematic:
+![Block Diagram](https://hc-cdn.hel1.your-objectstorage.com/s/v3/0bf70f7e9a7e821279a5e142fa11d75b07970837_image.png)
