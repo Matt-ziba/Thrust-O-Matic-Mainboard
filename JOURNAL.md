@@ -36,3 +36,18 @@ There is not much else to say, hopefully tomorrow I will have some more time to 
 
 #### BMS schematic:
 ![Block Diagram](https://hc-cdn.hel1.your-objectstorage.com/s/v3/0bf70f7e9a7e821279a5e142fa11d75b07970837_image.png)
+
+## 24.7.2025- Update, Block diagram revision, BMU layout changes and added USB + some protection
+So today I spent a good amount of time reading datasheets and diving deeper into the power delivery side of the project. Most of my focus was on figuring out how the system should handle it’s power. After some research, I came up with what I think is a solid approach.
+
+The device should draw a peak current of just under 1A, with a typical draw of around 500 mA during normal operation. This keeps it well within the range of what most USB sources can safely provide. When connected, the device will automatically switch over from battery to USB power using the TPS2116 power MUX.
+
+It will also monitor the voltage on the USB-C CC pins and the CHR pins of the CP2102. With this information, the system can figure out the current capacity of the USB source. Based on that, it can throttle it’s current draw, by disabling power hungry components (like the RGB LEDs or radio output) or reduce the processor power if needed. If the source is capable of supplying 3A, then the VIN pin of the IP5306 will be enabled to allow battery charging, otherwise, charging is disabled to avoid overloading the power source.
+
+I added the USB port along with a USBLC6 for ESD protection, and included EMI/ESD suppression between the USB shield and ground. I also added a simple pi filter on the VBUS line to suppress high-frequency noise.
+
+Decided to add 2 more LEDs to the SOC indicator for better granularity. That’s about it for today. it’s been a while since the last update, mostly due to procrastination, but with the deadline approaching, I really have to pick up the pace. Tomorrow, I plan to finish up the power circuitry and also hopefully connect the CP2102.
+
+![New block diagram](https://hc-cdn.hel1.your-objectstorage.com/s/v3/bbaa5b2785fe36aa1492deabeb4fdb3550108e6f_block_diagram.png)
+![USB path and some minor changes](https://hc-cdn.hel1.your-objectstorage.com/s/v3/b591260be96d52a30e19298110aa1b396e16f12c_main.png)
+![Changed to BMU layout to make it more readable](https://hc-cdn.hel1.your-objectstorage.com/s/v3/70f88f490d9c3e2df8fd7838451364e0782709c9_bmu.png)
