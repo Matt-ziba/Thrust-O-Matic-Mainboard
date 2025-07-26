@@ -25,8 +25,9 @@ After a couple hours of research i’ve created a block diagram of the electroni
 #### Block diagram:
 ![Block Diagram](https://hc-cdn.hel1.your-objectstorage.com/s/v3/ad1050f0f4cdaa7833b0d3583ed547c1f04eebf5_image.png)
 
-## 8.7.2025- Update, finished BMS circuit
-It’s been a while since the last update. I have been busy with end of the school year responsibilities and vacation. I’m currently in Poland, but I finally found some time to continue work on the project. Today, I focused on researching and drafting the schematic for the BMS.
+
+## 8.7.2025 - Update, finished BMU circuit
+It’s been a while since the last update. I have been busy with end of the school year responsibilities and vacation. I’m currently in Poland, but I finally found some time to continue work on the project. Today, I focused on researching and drafting the schematic for the BMU.
 
 The device is designed to charge its onboard battery when connected to USB, but only if the USB source is capable of delivering at least 3A. This functionality hasn’t been fully implemented yet. Initially, I considered using a USB-C PD controller IC to detect whether the connected USB port can supply enough current. However, I eventually decided that a simple switch would be a more simple solution. This way, the device will start to charge only when the charging is manually enabled.
 
@@ -34,10 +35,11 @@ The battery is necessary because the device is intended to operate outdoors wher
 
 There is not much else to say, hopefully tomorrow I will have some more time to work on the project.
 
-#### BMS schematic:
-![Block Diagram](https://hc-cdn.hel1.your-objectstorage.com/s/v3/0bf70f7e9a7e821279a5e142fa11d75b07970837_image.png)
+#### BMU schematic:
+![BMU schematic](https://hc-cdn.hel1.your-objectstorage.com/s/v3/0bf70f7e9a7e821279a5e142fa11d75b07970837_image.png)
 
-## 24.7.2025- Update, Block diagram revision, BMU layout changes and added USB + some protection
+
+## 24.7.2025 - Update, Block diagram revision, BMU layout changes and added USB + some protection
 So today I spent a good amount of time reading datasheets and diving deeper into the power delivery side of the project. Most of my focus was on figuring out how the system should handle it’s power. After some research, I came up with what I think is a solid approach.
 
 The device should draw a peak current of just under 1A, with a typical draw of around 500 mA during normal operation. This keeps it well within the range of what most USB sources can safely provide. When connected, the device will automatically switch over from battery to USB power using the TPS2116 power MUX.
@@ -51,3 +53,6 @@ Decided to add 2 more LEDs to the SOC indicator for better granularity. That’s
 ![New block diagram](https://hc-cdn.hel1.your-objectstorage.com/s/v3/bbaa5b2785fe36aa1492deabeb4fdb3550108e6f_block_diagram.png)
 ![USB path and some minor changes](https://hc-cdn.hel1.your-objectstorage.com/s/v3/b591260be96d52a30e19298110aa1b396e16f12c_main.png)
 ![Changed to BMU layout to make it more readable](https://hc-cdn.hel1.your-objectstorage.com/s/v3/70f88f490d9c3e2df8fd7838451364e0782709c9_bmu.png)
+
+## 26.7.2025 - Update, damn i did a lot of math today
+Didn’t really design anything today. I was busy cleaning most of the day, but when I got back to the project, I spent a few hours going over the power system. Lots of math, checking switching times, capacitor sizing, voltage drops, thermal stuff, and making sure the damn thing will actually work. I’m about 99% confident in the design now, but you can never be sure.
