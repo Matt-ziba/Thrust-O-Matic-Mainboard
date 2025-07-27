@@ -56,3 +56,7 @@ Decided to add 2 more LEDs to the SOC indicator for better granularity. That’s
 
 ## 26.7.2025 - Update, damn i did a lot of math today
 Didn’t really design anything today. I was busy cleaning most of the day, but when I got back to the project, I spent a few hours going over the power system. Lots of math, checking switching times, capacitor sizing, voltage drops, thermal stuff, and making sure the damn thing will actually work. I’m about 99% confident in the design now, but you can never be sure.
+
+## 27.7.2025 - Update, are you a current limiting device? Coz dam
+Spent most of today figuring out how MOSFET-based inrush current limiting works and doing the math for it. Turns out my USB line has way more capacitance than the standard allows. Apparently you're not allowed to just shove whatever you want on the VBUS line, if you do so, USB will be mad at you. Also wired up the TPS2116, Nothing special.
+![TPS2116](https://hc-cdn.hel1.your-objectstorage.com/s/v3/6b812e779c88425ae6f345eb355c1afd335647b9_image.png)
