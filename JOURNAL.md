@@ -60,3 +60,15 @@ Didn’t really design anything today. I was busy cleaning most of the day, but 
 ## 27.7.2025 - Update, are you a current limiting device? Coz dam
 Spent most of today figuring out how MOSFET-based inrush current limiting works and doing the math for it. Turns out my USB line has way more capacitance than the standard allows. Apparently you're not allowed to just shove whatever you want on the VBUS line, if you do so, USB will be mad at you. Also wired up the TPS2116, Nothing special.
 ![TPS2116](https://hc-cdn.hel1.your-objectstorage.com/s/v3/6b812e779c88425ae6f345eb355c1afd335647b9_image.png)
+
+## 28.7.2025 - Update, finally finished the power
+Even though I spent most of yesterday trying to make inrush current limiting work, I figure that the ~28uF I have straight on the VBUS line should still be fine. Although the device isn't USB compliant, no USB source should complain about it and shut off. Since the rest of the circuit is behind the TPS2116, which does have a soft-start feature that limits current, I should be fine.
+
+I finished up the rest of the power circuitry by adding two regulators, one linear for the ADCs and other more sensitive circuitry, and one switching for the ESP and LEDs, which shouldn’t care about voltage ripple that much. If I calculated everything correctly, I should have a voltage ripple of about 1.6mV on the buck output, which seems fine to me.
+
+I also calculated the thermals on everything, and nothing should go above 60°C, which is also great (the only components that will actually decently heat up are the regulators). The LDO will see a max current draw of around 200mA, but normally it'll be closer to 70–90mA. The buck regulator will see a max of 700mA, but that's assuming I'm running the ESP at max compute and max broadcasting, which isn't very likely. Still, I like to calculate and design everything with plenty of wiggle room to make sure it still works even if I mess something up. Pretty good practice when designing stuff that has anything to do with rockets, in my opinion.
+
+Even though the power circuitry took way longer than I'd like to admit, I'm pretty proud of it. Aside from the lack of inrush current limiting on the VBUS line, I think I designed it pretty well. Can’t really judge that right now though, while it might look good on paper and the calculations should add up, I won’t know for sure until I build the damn thing.
+
+Tomorrow should be way easier, since the rest of the circuitry is pretty straightforward. With any luck, I might be able to finish the schematic, which would leave me some time to actually start the PCB layout, which is what I’m dreading right now, especially with the deadline coming up fast.
+![Finished power schematic](https://hc-cdn.hel1.your-objectstorage.com/s/v3/c93e7ed0cc80505364b9fffd4093fa366432da03_schematic_tom-v2-mainboard_2025-07-28.png)
