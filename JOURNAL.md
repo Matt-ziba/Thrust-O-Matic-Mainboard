@@ -72,3 +72,8 @@ Even though the power circuitry took way longer than I'd like to admit, I'm pret
 
 Tomorrow should be way easier, since the rest of the circuitry is pretty straightforward. With any luck, I might be able to finish the schematic, which would leave me some time to actually start the PCB layout, which is what I’m dreading right now, especially with the deadline coming up fast.
 ![Finished power schematic](https://hc-cdn.hel1.your-objectstorage.com/s/v3/c93e7ed0cc80505364b9fffd4093fa366432da03_schematic_tom-v2-mainboard_2025-07-28.png)
+
+## 29.7.2025 - Update, CP2102N, ADS1220 connected
+So today was a busy day, spent most of it working on the project. Finalized the CP2102N and ADS1220 connections in the schematic, not a whole lot to say about that. The only thing left right now is to add connectors, the ignition circuitry, microSD connections and some RGBLEDs.
+![CP2102N schematic](https://hc-cdn.hel1.your-objectstorage.com/s/v3/434e101af2047d712049f544468f78d4abb0cc25_cp2102n-usb-uart.png)
+![ADS1220 schematic](https://hc-cdn.hel1.your-objectstorage.com/s/v3/045660deb062a4b928184f102059a0ce60cc2326_ads1220.png)
