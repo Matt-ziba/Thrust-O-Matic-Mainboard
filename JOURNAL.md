@@ -5,7 +5,9 @@ description: "The electronics portion of Thrust-O-Matic - my rocket motor thrust
 created_at: "2024-06-06"
 ---
 
-## 17.6.2025 - Start of project
+Total time spent: About 54h, +-5h because I haven’t exactly been timing it
+
+## 17.6.2025 - Start of project (4h)
 I have experimented in the past with KNSB rocket motors but had no reliable way of measuring their thrust. For that reason, I decided to build a thrust stand. Instead of going with the typical vertical motor orientation seen in most hobbyist solid motor thrust stands, I will use a horizontal setup. While this increases the mechanical complexity of the design, it should allow me to measure both the thrust and the weight of the motor.
 
 I would also like to measure the chamber pressure of the motor using a pressure transducer. The thrust stand will include a wireless ignition system as well.
@@ -26,7 +28,7 @@ After a couple hours of research i’ve created a block diagram of the electroni
 ![Block Diagram](https://hc-cdn.hel1.your-objectstorage.com/s/v3/ad1050f0f4cdaa7833b0d3583ed547c1f04eebf5_image.png)
 
 
-## 8.7.2025 - Update, finished BMU circuit
+## 8.7.2025 - Update, finished BMU circuit (3h)
 It’s been a while since the last update. I have been busy with end of the school year responsibilities and vacation. I’m currently in Poland, but I finally found some time to continue work on the project. Today, I focused on researching and drafting the schematic for the BMU.
 
 The device is designed to charge its onboard battery when connected to USB, but only if the USB source is capable of delivering at least 3A. This functionality hasn’t been fully implemented yet. Initially, I considered using a USB-C PD controller IC to detect whether the connected USB port can supply enough current. However, I eventually decided that a simple switch would be a more simple solution. This way, the device will start to charge only when the charging is manually enabled.
@@ -39,7 +41,7 @@ There is not much else to say, hopefully tomorrow I will have some more time to 
 ![BMU schematic](https://hc-cdn.hel1.your-objectstorage.com/s/v3/0bf70f7e9a7e821279a5e142fa11d75b07970837_image.png)
 
 
-## 24.7.2025 - Update, Block diagram revision, BMU layout changes and added USB + some protection
+## 24.7.2025 - Update, Block diagram revision, BMU layout changes and added USB + some protection (4h)
 So today I spent a good amount of time reading datasheets and diving deeper into the power delivery side of the project. Most of my focus was on figuring out how the system should handle it’s power. After some research, I came up with what I think is a solid approach.
 
 The device should draw a peak current of just under 1A, with a typical draw of around 500 mA during normal operation. This keeps it well within the range of what most USB sources can safely provide. When connected, the device will automatically switch over from battery to USB power using the TPS2116 power MUX.
@@ -54,14 +56,14 @@ Decided to add 2 more LEDs to the SOC indicator for better granularity. That’s
 ![USB path and some minor changes](https://hc-cdn.hel1.your-objectstorage.com/s/v3/b591260be96d52a30e19298110aa1b396e16f12c_main.png)
 ![Changed to BMU layout to make it more readable](https://hc-cdn.hel1.your-objectstorage.com/s/v3/70f88f490d9c3e2df8fd7838451364e0782709c9_bmu.png)
 
-## 26.7.2025 - Update, damn i did a lot of math today
+## 26.7.2025 - Update, damn i did a lot of math today (3h)
 Didn’t really design anything today. I was busy cleaning most of the day, but when I got back to the project, I spent a few hours going over the power system. Lots of math, checking switching times, capacitor sizing, voltage drops, thermal stuff, and making sure the damn thing will actually work. I’m about 99% confident in the design now, but you can never be sure.
 
-## 27.7.2025 - Update, are you a current limiting device? Coz dam
+## 27.7.2025 - Update, are you a current limiting device? Coz dam (5h)
 Spent most of today figuring out how MOSFET-based inrush current limiting works and doing the math for it. Turns out my USB line has way more capacitance than the standard allows. Apparently you're not allowed to just shove whatever you want on the VBUS line, if you do so, USB will be mad at you. Also wired up the TPS2116, Nothing special.
 ![TPS2116](https://hc-cdn.hel1.your-objectstorage.com/s/v3/6b812e779c88425ae6f345eb355c1afd335647b9_image.png)
 
-## 28.7.2025 - Update, finally finished the power
+## 28.7.2025 - Update, finally finished the power (8h)
 Even though I spent most of yesterday trying to make inrush current limiting work, I figure that the ~28uF I have straight on the VBUS line should still be fine. Although the device isn't USB compliant, no USB source should complain about it and shut off. Since the rest of the circuit is behind the TPS2116, which does have a soft-start feature that limits current, I should be fine.
 
 I finished up the rest of the power circuitry by adding two regulators, one linear for the ADCs and other more sensitive circuitry, and one switching for the ESP and LEDs, which shouldn’t care about voltage ripple that much. If I calculated everything correctly, I should have a voltage ripple of about 1.6mV on the buck output, which seems fine to me.
@@ -73,7 +75,14 @@ Even though the power circuitry took way longer than I'd like to admit, I'm pret
 Tomorrow should be way easier, since the rest of the circuitry is pretty straightforward. With any luck, I might be able to finish the schematic, which would leave me some time to actually start the PCB layout, which is what I’m dreading right now, especially with the deadline coming up fast.
 ![Finished power schematic](https://hc-cdn.hel1.your-objectstorage.com/s/v3/c93e7ed0cc80505364b9fffd4093fa366432da03_schematic_tom-v2-mainboard_2025-07-28.png)
 
-## 29.7.2025 - Update, CP2102N, ADS1220 connected
+## 29.7.2025 - Update, CP2102N, ADS1220 connected (10h)
 So today was a busy day, spent most of it working on the project. Finalized the CP2102N and ADS1220 connections in the schematic, not a whole lot to say about that. The only thing left right now is to add connectors, the ignition circuitry, microSD connections and some RGBLEDs.
 ![CP2102N schematic](https://hc-cdn.hel1.your-objectstorage.com/s/v3/434e101af2047d712049f544468f78d4abb0cc25_cp2102n-usb-uart.png)
 ![ADS1220 schematic](https://hc-cdn.hel1.your-objectstorage.com/s/v3/045660deb062a4b928184f102059a0ce60cc2326_ads1220.png)
+
+## 30.7.2025 - Update, started routing PCB (10h)
+Finally finished up the schematic and started routing the PCB, hopefully i'll finish it in time. I added the connectors, finished up the ignition circuitry, wired the microSD connector and also the RGBLEDs which I was talking about yesterday
+
+## 31.7.2025 - Update, finished the damn thing (12h)
+Honestly im exhausted, not much to say. Routed the entire thing.
+![Finished PCB 3D model](https://hc-cdn.hel1.your-objectstorage.com/s/v3/d47cf0837bba7d3b9cd2c3ce79ec2b9803197f51__a5b85fed-d504-4bf3-8373-a334b7def38a_.png)
