@@ -74,8 +74,8 @@ I decided to focus mainly on the electronics for now, the mechanical still works
 | 50  | ADS1220IPWR               | ADC IC                  | 2        | LCSC        | 2.138      | 2.138          |
 | 51  | TLP250H(F)                | Optocoupler IC          | 1        | LCSC        | 1.255      | 1.255          |
 | 52  | TYPE-C 16PIN              | USB-C connector         | 1        | LCSC        | 0.058      | 0.55           |
-| 53  | Pressure Transducer       | Pressure transducer     | 1        | Aliexpress  | 16.26      | 17.26          |
-| 54  | Inline load cell          | Load cell               | 1        | Aliexpress  | 32.5       | 33.5           |
-| 55  | Straight bar load cell    | Load cell               | 2        | Aliexpress  | 2          | 3              |
-| 56  | Antenna                   | Antenna                 | 3        | Aliexpress  | 2          | 3              |
-|     |                           |                         |          |             | **Total**  | **88.775**     |
+| 53  | Pressure Transducer       | Pressure transducer     | 1        | Aliexpress  | 16.26      | 16.26          |
+| 54  | Inline load cell          | Load cell               | 1        | Aliexpress  | 32.5       | 32.5           |
+| 55  | Straight bar load cell    | Load cell               | 2        | Aliexpress  | 2          | 2              |
+| 56  | Antenna                   | Antenna                 | 3        | Aliexpress  | 2          | 2              |
+|     |                           |                         |          |             | **Total**  | **84.775**     |
